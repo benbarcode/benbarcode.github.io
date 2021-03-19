@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<script type="text/javascript">  
+		function PrintDiv() 
+	   {  
+		   //var divContents = document.getElementById("printdivcontent").innerHTML;  
+		   var printWindow = window.open('', '', 'height=800,width=600');  
+		   printWindow.document.write('<html><head><title>PrintContent</title>');
+		   printWindow.document.write('<style>@page{margin-top:2mm;margin-bottom:0;margin-right:0;margin-left:0;}</style>');		   
+		   printWindow.document.write('</head><body>');  
+		   //printWindow.document.write(divContents);  
+		   for ( i=1;i<=3;i++ ){
+			for (j=1;j<=11;j++){
+				printWindow.document.write("Line:"+i+"-"+j+"<br/>"); 
+			}
+		   }
+		   printWindow.document.write("Line:"+(i)+"-"+1+"<br/>"); 
+		   printWindow.document.write("Line:"+(i)+"-"+2+"<br/>"); 
+		   printWindow.document.write('</body></html>');  
+		   printWindow.document.close();  
+		   printWindow.print();  
+		}  
+	</script>
+  
+  
+    <style>
+	@page{
+		margin-top:0;
+		margin-bottom:0;
+		margin-right:0;
+		margin-left:0;
+		size:58mm 60mm;
+	}
+    body {
+        height: 50mm;
+        width:  60mm;
+    }
+	@media print {
+		.pagebreak {page-break-before: always;} /* page-break-after works, as well */
+		.noPrint {display: none;}
+		.noBreak {break-inside: avoid;}
+	}
+    </style>
+  </head>
+  <body>
+	<button onclick="PrintDiv();" class="noPrint">Print</button>
+  </body>
+</html>
